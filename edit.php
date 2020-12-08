@@ -58,7 +58,12 @@ if (isset($_POST['submit']) && $_POST['submit'] != '') {
             if ($row['emailCount'] > 0) {
                 array_push($errors, 'Email must be Unique!');
             }
+       
+       
         }
+
+        
+
     }
     // print_r($errors);
     // echo count($errors);
@@ -69,18 +74,19 @@ if (isset($_POST['submit']) && $_POST['submit'] != '') {
 
         $first_name = (!empty($_POST['first_name'])) ? $_POST['first_name'] : "";
         $last_name = (!empty($_POST['last_name'])) ? $_POST['last_name'] : "";
-        $gender = (!empty($_POST['gender'])) ? $_POST['gender'] : "";
+        $upload_image = (!empty($_POST['upload_image'])) ? $_POST['upload_image'] : "";
+        $gender = (!empty($_POST['gender'])) ? $_POST['gender'] : "";   
         $email = (!empty($_POST['email'])) ? $_POST['email'] : "";
         $branch = (!empty($_POST['branch'])) ? $_POST['branch'] : "";
         $id = (!empty($_POST['student_id'])) ? $_POST['student_id'] : "";
 
         if (!empty($id)) {
             //update record
-            $stud_query = "UPDATE students SET first_name='" . $first_name . "' , last_name='" . $last_name . "', gender='" . $gender . "', email='" . $email . "', branch ='" . $branch . "' WHERE id ='" . $id . "'";
+            $stud_query = "UPDATE students SET first_name='" . $first_name . "' , last_name='" . $last_name . "' , upload_image= '".$upload_image."' , gender='" . $gender . "', email='" . $email . "', branch ='" . $branch . "' WHERE id ='" . $id . "'";
             $msg = "Update";
         } else {
             //insert the new record
-            $stud_query = "INSERT INTO students (first_name, last_name, gender ,email,branch) VALUES ('$first_name', '$last_name','$gender','$email','$branch')";
+            $stud_query = "INSERT INTO students (first_name, last_name, upload_image , gender ,email,branch) VALUES ('$first_name', '$last_name', '$upload_image','$gender','$email','$branch')";
             $msg = "add";
         }
 

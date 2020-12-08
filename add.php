@@ -9,12 +9,14 @@ if (isset($_GET['id']) && $_GET['id'] != '') { //when id is not empty
   $results = mysqli_fetch_row($stu_res);
   $first_name = $results[1];
   $last_name = $results[2];
-  $gender = $results[3];
-  $email = $results[4];
-  $branch = $results[5];
+  $upload_image =$results[3];
+  $gender = $results[4];
+  $email = $results[5];
+  $branch = $results[6];
 } else {
   $first_name = "";
   $last_name = "";
+  $upload_image="";
   $gender = "";
   $email = "";
   $branch = "";
@@ -29,7 +31,7 @@ if (isset($_GET['id']) && $_GET['id'] != '') { //when id is not empty
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CRUD OPERATIONS</title>
+  <title>crud operations</title>
     
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
   <style>
@@ -46,7 +48,7 @@ if (isset($_GET['id']) && $_GET['id'] != '') { //when id is not empty
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">CLASSROOM</a>
+    <a class="navbar-brand" href="#">Student LOGIN</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -73,8 +75,16 @@ if (isset($_GET['id']) && $_GET['id'] != '') { //when id is not empty
     }
     ?>
     <div class="formdiv">
-      <div class="info"> </div>
-      <form method="POST" action="edit.php">
+      <div class="info"> </div><div id="content">
+      
+    
+
+
+
+
+
+
+      <form method="POST"    action="edit.php" action ="upload.php"   enctype="multipart/form-data">
         <div class="form-group row">
           <label for="first_name" class="col-sm-3 col-form-label">First Name</label>
           <div class="col-sm-10">
@@ -86,6 +96,15 @@ if (isset($_GET['id']) && $_GET['id'] != '') { //when id is not empty
           <label for="last_name" class="col-sm-3 col-form-label">Last Name</label>
           <div class="col-sm-10">
             <input type="text" required name="last_name" class="form-control" id="last_name" value="<?php echo  $last_name; ?> ">
+          </div>
+        </div>
+
+        
+        <div class="form-group row">
+          <label for="upload_image" class="col-sm-3 col-form-label">Profile Picture</label>
+          <div class="col-sm-10">
+            <input type="file" required  name="filename" class="form-control" id="upload_image"  value="<?php echo  $upload_image; ?>">
+            
           </div>
         </div>
 
@@ -117,6 +136,9 @@ if (isset($_GET['id']) && $_GET['id'] != '') { //when id is not empty
           </div>
         </div>
 
+
+        
+        
 
 
 

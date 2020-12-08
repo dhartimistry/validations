@@ -1,7 +1,7 @@
 <?php
   //mysql connection 
   //read records
-  require_once 'db.php';
+  require_once 'db.php' ;
   $query = "SELECT * FROM students";
 
   $results = mysqli_query($conn , $query);
@@ -24,7 +24,7 @@
     <head>
     <meta charset = "UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD OPERATIONS</title> 
+    <title>Student LOGIN</title> 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"/>
     <style>
@@ -35,7 +35,7 @@
 
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">CLASSROOM</a>
+        <a class="navbar-brand" href="#">Student LOGIN</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -68,6 +68,7 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Name</th>
+      <th scope="col">Profile Picture</th>
       <th scope="col">Gender</th>
       <th scope="col">Email</th>
       <th scope="col">Branch</th>
@@ -85,6 +86,7 @@
                 <tr>
                       <th scope="row"><?php echo $row['id']; ?></th>
                       <td><?php echo $row['first_name']. ' '.$row['last_name']; ?></td>
+                      <td><?php echo $row['upload_image'] ?></td>
                       <td><?php echo $row['gender'] ?></td>
                       <td><?php echo $row['email'] ?></td>
                       <td><?php echo $row['branch'] ?></td>
